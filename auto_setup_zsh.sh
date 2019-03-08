@@ -1,13 +1,24 @@
-ECHO 'INSTALL ZSH'
-brew install zsh
-# set zsh defaul shell
-sudo sh -c "echo $(which zsh) >> /etc/shells" 
-chsh -s $(which zsh) # set zsh as default
-
-if [[ -d ~/.oh_my_zsh ]]; then
-  ECHO 'INSTALL OH MY ZSH'
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! $SHELL = '/usr/local/bin/zsh' ]; then
+  ECHO 'INSTALL ZSH'
+  brew install zsh
+  # set zsh defaul shell
+  echo $SHELL
+  sudo sh -c "echo $(which zsh) >> /etc/shells" 
+  chsh -s $(which zsh) # set zsh as default
 fi
+
+if [ ! -d ~/.oh-my-zsh ]; then
+  ECHO 'INSTALL OH MY ZSH'
+  echo "" > ~/.zshrc
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+  echo " RESET .ZSHRC "
+  echo "export ZSH=\"/Users/fu/.oh-my-zsh\"
+  ZSH_THEME=\"robbyrussell\"
+  # export UPDATE_ZSH_DAYS=13
+  plugins=(git)" > ~/.zshrc
+fi
+
 source ~/.zshrc
 
 ####################
@@ -47,6 +58,7 @@ sed -i '' "s/# export UPDATE_ZSH_DAYS=13/export UPDATE_ZSH_DAYS=30/g" ~/.zshrc
 
 # add all setups
 echo "\n#########################
+source $ZSH/oh-my-zsh.sh
 
 # ssh
 export SSH_KEY_PATH=\"~/.ssh/rsa_id\"
@@ -91,7 +103,14 @@ fi
 bindkey ',' autosuggest-accept
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-# IMPORT
+
+# -----------------------------------------------
+# Environment Variables
+# -----------------------------------------------
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export HISTCONTROL=ignoredups
+export SAVEHIST=10000
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
@@ -106,6 +125,8 @@ brew install bat
 
 # reload zsh
 source ~/.zshrc
+
+zsh
 
 
 
