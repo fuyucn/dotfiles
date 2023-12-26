@@ -13,8 +13,10 @@
 # .config
 !.config/
 !.config/*
-!.config/nvim/*
-!.config/karabiner/*
+!.config/nvim/**/*.lua
+!.config/nvim/**/lazy-lock.json
+# !.config/nvim/lua/**/*
+!.config/karabiner/**/*
 
 .config/.DS_Store
 
