@@ -16,16 +16,18 @@
 .config/.DS_Store
 
 # NVim
+!.config/nvim/*
 !.config/nvim/lua/
 !.config/nvim/lua/*.lua
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*.lua
 # !.config/nvim/lazy-lock.json
 #!.config/nvim/lua/**/*
-!.config/karabiner/**/*
+
 
 # Karabiner
 !.config/karabiner/*
+!.config/karabiner/*/*
 .config/karabiner/automatic_backups
 
 
