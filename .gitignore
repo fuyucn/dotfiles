@@ -1,0 +1,24 @@
+# Include all
+.*
+*
+.DS_Store
+# .cofigs/*
+
+# Exclude
+# Dot files
+!.vimrc
+!.zshrc
+!.bash_profile
+
+# .config
+!.config/
+!.config/*
+!.config/nvim/*
+!.config/karabiner/*
+
+.config/.DS_Store
+
+# git
+!.gitignore
+
+
