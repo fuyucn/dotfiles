@@ -53,8 +53,8 @@ export AWS_REGION=us-east-1
 
 alias ni='npm i'
 alias nr='npm run'
-alias nlint='npm run lint'
-alias nlintf='npm run lint --fix'
+#alias nlint='npm run lint'
+#alias nlintf='npm run lint --fix'
 alias yi='yarn install'
 alias yr='yarn run'
 alias pni='pnpm install'
