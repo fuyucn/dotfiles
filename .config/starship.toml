@@ -46,7 +46,9 @@ symbol = " "
 symbol = " "
 
 [directory]
-read_only = " 󰌾"
+read_only = " "
+truncation_length = 3
+truncate_to_repo = true
 
 [docker_context]
 symbol = " "
@@ -205,3 +207,20 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+# Currnet Git user
+[custom.git_email]
+command = "git config user.email 2>/dev/null"
+when = "git rev-parse --git-dir 2>/dev/null"
+shell = ["sh"]
+format = " [$output]($style) "
+style = "bright-yellow bold"
+
+# Git status
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
+# bash
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
